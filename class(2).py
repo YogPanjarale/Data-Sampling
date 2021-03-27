@@ -19,19 +19,18 @@ for i in range(0, noE):
     wf.append(wf_[vw])
 print(f"Length L1: {len(hf_)}\nLength L2: {len(hf)}")
 print(wf)
-# plot = ff.create_distplot([wf, hf], ["Weight", "Height"], show_hist=False)
-plot = ff.create_distplot([wf], ["Weight"])
-# meanw = stats.mean(wf)
-# meanh = stats.mean(hf)
-# stdevW = stats.stdev(wf)
-# stdevH = stats.stdev(hf)
-# print(f"Mean: {meanw} {meanh} Standard Deviation: {stdevW} {stdevH}")
-# plot.add_trace(go.Scatter(x=[meanh, meanh], y=[
-#                0, 1], mode="lines", name="Mean Height"))
-# plot.add_trace(go.Scatter(x=[meanw, meanw], y=[
-#                0, 1], mode="lines", name="Mean Weight"))
-# plot.add_trace(go.Scatter(x=[stdevH, stdevH], y=[0, 1],
-#                           mode="lines", name=" Standard Deviation Height"))
-# plot.add_trace(go.Scatter(x=[stdevW, stdevW], y=[0, 1],
-#                           mode="lines", name=" Standard Deviation Weight"))
+plot = ff.create_distplot([wf, hf], ["Weight", "Height"], show_hist=False)
+meanw = stats.mean(wf)
+meanh = stats.mean(hf)
+stdevW = stats.stdev(wf)
+stdevH = stats.stdev(hf)
+print(f"Mean: {meanw} {meanh} Standard Deviation: {stdevW} {stdevH}")
+plot.add_trace(go.Scatter(x=[meanh, meanh], y=[
+               0, 1], mode="lines", name="Mean Height"))
+plot.add_trace(go.Scatter(x=[meanw, meanw], y=[
+               0, 1], mode="lines", name="Mean Weight"))
+plot.add_trace(go.Scatter(x=[stdevH, stdevH], y=[0, 1],
+                          mode="lines", name=" Standard Deviation Height"))
+plot.add_trace(go.Scatter(x=[stdevW, stdevW], y=[0, 1],
+                          mode="lines", name=" Standard Deviation Weight"))
 plot.show()
