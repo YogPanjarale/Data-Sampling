@@ -20,12 +20,13 @@ def random_set_of_mean(no: int):
 # function to plot the mean on the graph
 
 
-def show_fig(mean_list):
+def show_fig(mean_list, mean: float, stdev: float):
     df = mean_list
-    mean = stats.mean(df)
     fig = ff.create_distplot([df], ["reading_time"], show_hist=False)
     fig.add_trace(go.Scatter(x=[mean, mean], y=[
                   0, 1], mode="lines", name="Mean"))
+    fig.add_trace(go.Scatter(x=[stdev, stdev], y=[
+                  0, 1], mode="lines", name="Standard Deviation"))
     fig.show()
 # function to find the standard deviation of the sample data
 
@@ -41,23 +42,24 @@ def standard_deviation(no: int):
     # print("sampling mean :- ", std_deviation)
 
 
-def setup():
+def setup(no: int):
     mean_list = []
-    for i in range(0, 1000):
+    for i in range(0, no):
         setOfMeans = random_set_of_mean(100)
         mean_list.append(setOfMeans)
-    show_fig(mean_list)
-    mean = stats.mean(mean_list)
-    print("Mean of sampling distribution : ", mean)
+    return mean_list
+    # show_fig(mean_list)
+    # mean = stats.mean(mean_list)
+    # print("Mean of sampling distribution : ", mean)
 
 
 if __name__ == "__main__":
-    setup()
+    l = setup(100)
     mmean = random_set_of_mean(100)
     print(f"Mean of sample of data: {mmean}")
     stdev = standard_deviation(100)
     print(f"Standard Deviation of sample of data: {stdev}")
-    show_fig()
+    show_fig(l, mmean, stdev)
 
 
 population_mean = stats.mean(data)
