@@ -4,7 +4,7 @@ import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import statistics as stats
 # no of entries
-noE = 100
+noE = 1000
 file1 = pd.read_csv("./hw_25000.csv")
 print(file1.keys())
 hf_ = file1['Height(Inches)'].to_list()
@@ -18,13 +18,17 @@ for i in range(0, noE):
     # print(wf_[vw])
     wf.append(wf_[vw])
 print(f"Length L1: {len(hf_)}\nLength L2: {len(hf)}")
-print(wf)
 plot = ff.create_distplot([wf, hf], ["Weight", "Height"], show_hist=False)
 meanw = stats.mean(wf)
 meanh = stats.mean(hf)
 stdevW = stats.stdev(wf)
 stdevH = stats.stdev(hf)
-print(f"Mean: {meanw} {meanh} Standard Deviation: {stdevW} {stdevH}")
+print(f"Sample Mean: {meanw} {meanh} Standard Deviation: {stdevW} {stdevH}")
+meanw = stats.mean(wf_)
+meanh = stats.mean(hf_)
+stdevW = stats.stdev(wf_)
+stdevH = stats.stdev(hf_)
+print(f"All Mean: {meanw} {meanh} Standard Deviation: {stdevW} {stdevH}")
 plot.add_trace(go.Scatter(x=[meanh, meanh], y=[
                0, 1], mode="lines", name="Mean Height"))
 plot.add_trace(go.Scatter(x=[meanw, meanw], y=[
